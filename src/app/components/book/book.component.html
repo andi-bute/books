@@ -1,0 +1,69 @@
+<div class="book-form">
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="form-group col-4">
+      <label>Title</label>
+      <input
+        type="text"
+        formControlName="title"
+        class="form-control input-title"
+        [ngClass]="{
+          'is-invalid': submitted && bookForm.controls['title'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && bookForm.controls['title'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="bookForm.controls['title'].errors['required']">
+          Title is required
+        </div>
+        <div *ngIf="bookForm.controls['title'].errors['backend']">
+          {{ bookForm.controls['title'].errors['backend']['message'] }}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-4">
+      <label>Author</label>
+      <input
+        type="text"
+        formControlName="author"
+        class="form-control input-author"
+        [ngClass]="{
+          'is-invalid': submitted && bookForm.controls['author'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && bookForm.controls['author'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="bookForm.controls['author'].errors['required']">
+          Author is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-2">
+      <label>Published date</label>
+      <input
+        type="date"
+        formControlName="published"
+        class="form-control input-published"
+        [ngClass]="{
+          'is-invalid': submitted && bookForm.controls['published'].errors
+        }"
+      />
+      <div
+        *ngIf="submitted && bookForm.controls['published'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="bookForm.controls['published'].errors['required']">
+          Publish date is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-12">
+      <button type="submit" class="btn btn-primary add-book">Add Book</button>
+    </div>
+  </form>
+</div>

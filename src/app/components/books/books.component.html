@@ -1,0 +1,45 @@
+<table class="table table-secondary shadow">
+  <thead>
+    <tr>
+      <th
+        scope="col"
+        *ngFor="let headerItem of headerRowItems"
+        (click)="onSort(headerItem.key)"
+        class="header-{{ headerItem.key }}"
+      >
+        <div class="d-flex">
+          {{ headerItem.displayName }}
+          <!-- SORT -->
+          <div class="d-flex flex-column ms-2">
+            <i
+              class="bi bi-caret-up-fill"
+              [class.sort-header-active]="
+                (sortDirection$ | async) === SortDirectionEnum.ASC &&
+                headerItem.key === (sortKey$ | async)
+              "
+            >
+            </i>
+            <i
+              class="bi bi-caret-down-fill"
+              [class.sort-header-active]="
+                (sortDirection$ | async) === SortDirectionEnum.DESC &&
+                headerItem.key === (sortKey$ | async)
+              "
+            >
+            </i>
+          </div>
+          <!-- SORT -->
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books$ | async">
+      <td class="cell-title">
+        {{ book.title }}
+      </td>
+      <td class="cell-author">{{ book.author }}</td>
+      <td class="cell-published">{{ book.published | date }}</td>
+    </tr>
+  </tbody>
+</table>

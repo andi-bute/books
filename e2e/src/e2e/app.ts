@@ -6,5 +6,5 @@ Given('I go to homepage', () => {
 });
 
 Then('the page is displayed', () => {
-  getGreeting().contains('Welcome books-nx');
+  getGreeting().contains('Welcome to books app');
 });

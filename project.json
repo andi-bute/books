@@ -53,7 +53,8 @@
           "browserTarget": "books-nx:build:production"
         },
         "development": {
-          "browserTarget": "books-nx:build:development"
+          "browserTarget": "books-nx:build:development",
+          "proxyConfig": "proxy.conf.json"
         }
       },
       "defaultConfiguration": "development"
